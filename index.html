@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber Bytes Bistro</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #101010;
+      color: #00ccff;
+      line-height: 1.6;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    header {
+      background: #0d0d0d;
+      padding: 20px;
+      text-align: center;
+      border-bottom: 5px dashed #00ccff;
+      box-shadow: 0 4px 12px #00ccff44;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 3rem;
+      letter-spacing: 2px;
+      text-shadow: 2px 2px #005577;
+    }
+
+    header p {
+      font-style: italic;
+      font-size: 1.2rem;
+    }
+
+    .menu-section {
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeIn 0.5s ease;
+    }
+
+    h2 {
+      border-bottom: 3px dotted #00ccff;
+      padding-bottom: 5px;
+      font-size: 1.8rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+
+    li {
+      background: #1a1a1a;
+      margin: 10px 0;
+      padding: 15px;
+      border-left: 10px solid #00ccff;
+      border-radius: 12px;
+      box-shadow: 2px 2px 12px #00ccff44;
+      transition: transform 0.2s ease;
+      cursor: pointer;
+    }
+
+    li:hover {
+      transform: scale(1.02);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #0d0d0d;
+      color: #88ddff;
+      border-top: 3px dashed #00ccff;
+      font-size: 1rem;
+    }
+
+    .details {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .details img {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 0 15px #00ccff88;
+    }
+
+    .back-button {
+      background: #00ccff;
+      color: #101010;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-top: 20px;
+      transition: background 0.3s ease;
+    }
+
+    .back-button:hover {
+      background: #66ffff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Cyber Bytes Bistro</h1>
+    <p>"Où le code rencontre la cuisine"</p>
+  </header>
+
+  <div class="menu-section" id="menu">
+    <h2>🖥️ ENTRÉES (CADRES PRINCIPAUX)</h2>
+    <ul>
+      <li onclick="showItem('Le Burger Pare-feu')">Le Burger Pare-feu</li>
+      <li onclick="showItem('Nouilles Néon')">Nouilles Néon</li>
+      <li onclick="showItem('Quesadilla Quantique')">Quesadilla Quantique</li>
+      <li onclick="showItem('Bol de Bœuf Binaire')">Bol de Bœuf Binaire</li>
+    </ul>
+    <h2>🍟 SNACKS (MORDILLES DE DONNÉES)</h2>
+    <ul>
+      <li onclick="showItem('Frites Pixel')">Frites Pixel</li>
+      <li onclick="showItem('Chips Glitch')">Chips Glitch</li>
+      <li onclick="showItem('Bâtonnets RAM')">Bâtonnets RAM</li>
+      <li onclick="showItem('Pops Hacker')">Pops Hacker</li>
+    </ul>
+    <h2>🌶️ ALIMENTS CHAUDS (SUR-ÉLECTRIFIÉS)</h2>
+    <ul>
+      <li onclick="showItem('Ailes Overdrive')">Ailes Overdrive</li>
+      <li onclick="showItem('Tacos Thermiques')">Tacos Thermiques</li>
+      <li onclick="showItem('Brochettes de Légumes Voltage')">Brochettes de Légumes Voltage</li>
+    </ul>
+    <h2>🥤 BOISSONS (CODE LIQUIDE)</h2>
+    <ul>
+      <li onclick="showItem('Soda Écran Bleu')">Soda Écran Bleu</li>
+      <li onclick="showItem('Limonade Erreur 404')">Limonade Erreur 404</li>
+      <li onclick="showItem('Cola Nitro Néon')">Cola Nitro Néon</li>
+      <li onclick="showItem('Frost Pare-feu')">Frost Pare-feu</li>
+    </ul>
+    <h2>🍰 DESSERTS (DÉLICES DU SYSTÈME)</h2>
+    <ul>
+      <li onclick="showItem('Cookie.exe')">Cookie.exe</li>
+      <li onclick="showItem('Gâteau Cloud')">Gâteau Cloud</li>
+      <li onclick="showItem('Gelato Glitch')">Gelato Glitch</li>
+      <li onclick="showItem('Sundae Boss Final')">Sundae Boss Final</li>
+    </ul>
+    <h2>💾 SPÉCIAUX (ACCÈS VIP REQUIS)</h2>
+    <ul>
+      <li onclick="showItem('Platter Admin')">Platter Admin</li>
+      <li onclick="showItem('Pizza Boucle Infinie')">Pizza Boucle Infinie</li>
+      <li onclick="showItem('Donut Web Sombre')">Donut Web Sombre</li>
+    </ul>
+  </div>
+
+  <div class="details" id="itemDetails"></div>
+
+  <footer>
+    <p>&copy; 2025 Ervin Ezzati Jivan. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    const itemInfo = {
+      "Le Burger Pare-feu": {
+        img: "https://via.placeholder.com/300x200?text=Burger+Pare-feu",
+        description: "Galette épicée infusée à l’IA, fromage glitch, sauce pare-feu",
+        ingredients: ["Galette épicée", "Fromage glitch", "Sauce pare-feu"]
+      },
+      "Nouilles Néon": {
+        img: "https://via.placeholder.com/300x200?text=Nouilles+Néon",
+        description: "Ramen illuminé LED avec légumes holographiques & bouillon numérique",
+        ingredients: ["Nouilles LED", "Légumes holographiques", "Bouillon digital"]
+      },
+      "Quesadilla Quantique": {
+        img: "https://via.placeholder.com/300x200?text=Quesadilla+Quantique",
+        description: "Cyber-fromage fondu, nano-chips et salsa photon",
+        ingredients: ["Cyber-fromage", "Nano-chips", "Salsa photon"]
+      },
+      "Bol de Bœuf Binaire": {
+        img: "https://via.placeholder.com/300x200?text=Boeuf+Binaire",
+        description: "Steak assaisonné 0101, riz de données, légumes cryptés",
+        ingredients: ["Steak 0101", "Riz de données", "Légumes cryptés"]
+      },
+      "Frites Pixel": {
+        img: "https://via.placeholder.com/300x200?text=Frites+Pixel",
+        description: "Pommes de terre coupées en binaire avec ketchup Matrix",
+        ingredients: ["Pommes de terre", "Ketchup Matrix"]
+      },
+      "Chips Glitch": {
+        img: "https://via.placeholder.com/300x200?text=Chips+Glitch",
+        description: "Chips tortilla avec sauce erreur de code",
+        ingredients: ["Chips tortilla", "Sauce erreur"]
+      },
+      "Bâtonnets RAM": {
+        img: "https://via.placeholder.com/300x200?text=Bâtonnets+RAM",
+        description: "Bâtonnets mozzarella épicés et chargés de mémoire",
+        ingredients: ["Mozzarella", "Épices RAM"]
+      },
+      "Pops Hacker": {
+        img: "https://via.placeholder.com/300x200?text=Pops+Hacker",
+        description: "Popcorn avec caramel crypté et poussière néon",
+        ingredients: ["Popcorn", "Caramel crypté", "Poussière néon"]
+      },
+      "Ailes Overdrive": {
+        img: "https://via.placeholder.com/300x200?text=Ailes+Overdrive",
+        description: "Ailes enrobées de piment ghost, avec dip refroidissant",
+        ingredients: ["Ailes de poulet", "Piment ghost", "Dip refroidissant"]
+      },
+      "Tacos Thermiques": {
+        img: "https://via.placeholder.com/300x200?text=Tacos+Thermiques",
+        description: "Viande d'IA chauffée dans des coquilles nano",
+        ingredients: ["Viande d'IA", "Coquilles nano"]
+      },
+      "Brochettes de Légumes Voltage": {
+        img: "https://via.placeholder.com/300x200?text=Brochettes+Voltage",
+        description: "Légumes grillés avec sauce surcharge électrique",
+        ingredients: ["Légumes", "Sauce électrique"]
+      },
+      "Soda Écran Bleu": {
+        img: "https://via.placeholder.com/300x200?text=Soda+Écran+Bleu",
+        description: "Soda énergisé avec glaçons à l'azote liquide",
+        ingredients: ["Soda énergisé", "Glaçons à l'azote"]
+      },
+      "Limonade Erreur 404": {
+        img: "https://via.placeholder.com/300x200?text=Limonade+Erreur+404",
+        description: "Limonade citronnée, avec infusions de bugs sucrés",
+        ingredients: ["Citron", "Infusions de bugs"]
+      },
+      "Cola Nitro Néon": {
+        img: "https://via.placeholder.com/300x200?text=Cola+Nitro+Néon",
+        description: "Cola avec une touche de nitro, goût incandescent",
+        ingredients: ["Cola", "Nitro"]
+      },
+      "Frost Pare-feu": {
+        img: "https://via.placeholder.com/300x200?text=Frost+Pare-feu",
+        description: "Glace à la menthe infusée au pare-feu",
+        ingredients: ["Glace menthe", "Pare-feu"]
+      },
+      "Cookie.exe": {
+        img: "https://via.placeholder.com/300x200?text=Cookie.exe",
+        description: "Cookie qui bug, fondant à l'intérieur",
+        ingredients: ["Chocolat", "Vanille"]
+      },
+      "Gâteau Cloud": {
+        img: "https://via.placeholder.com/300x200?text=Gâteau+Cloud",
+        description: "Gâteau léger comme du cloud avec glace numérique",
+        ingredients: ["Farine", "Glace numérique"]
+      },
+      "Gelato Glitch": {
+        img: "https://via.placeholder.com/300x200?text=Gelato+Glitch",
+        description: "Gelato artisanale avec un effet glitch",
+        ingredients: ["Crème", "Fruits"]
+      },
+      "Sundae Boss Final": {
+        img: "https://via.placeholder.com/300x200?text=Sundae+Boss+Final",
+        description: "Sundae ultime, avec un topping de code error",
+        ingredients: ["Crème glacée", "Fruits", "Code Error"]
+      },
+      "Platter Admin": {
+        img: "https://via.placeholder.com/300x200?text=Platter+Admin",
+        description: "Plateau VIP avec tout ce que le réseau a à offrir",
+        ingredients: ["Tout"]
+      },
+      "Pizza Boucle Infinie": {
+        img: "https://via.placeholder.com/300x200?text=Pizza+Boucle+Infinie",
+        description: "Pizza avec fromage fondu et viande en boucle infinie",
+        ingredients: ["Fromage", "Viande"]
+      },
+      "Donut Web Sombre": {
+        img: "https://via.placeholder.com/300x200?text=Donut+Web+Sombre",
+        description: "Donut noir avec une brume de chocolat liquide",
+        ingredients: ["Pâte à donut", "Chocolat"]
+      }
+    };
+
+    function showItem(name) {
+      const item = itemInfo[name];
+      const menu = document.getElementById("menu");
+      const details = document.getElementById("itemDetails");
+
+      menu.style.display = "none";
+      details.style.display = "block";
+      details.innerHTML = `
+        <h2>${name}</h2>
+        <img src="${item.img}" alt="${name}">
+        <p><strong>Description:</strong> ${item.description}</p>
+        <p><strong>Ingrédients:</strong> ${item.ingredients.join(', ')}</p>
+        <button class="back-button" onclick="goHome()">🏠 Retour au menu</button>
+      `;
+    }
+
+    function goHome() {
+      document.getElementById("menu").style.display = "block";
+      document.getElementById("itemDetails").style.display = "none";
+    }
+  </script>
+</body>
+</html>
